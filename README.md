@@ -1,3 +1,3 @@
-#Stripe Menus with React
+# Stripe Menus with React
 
-Source:https://react-projects-13-stripe-submenus.netlify.app/
+Source: https://react-projects-13-stripe-submenus.netlify.app/
