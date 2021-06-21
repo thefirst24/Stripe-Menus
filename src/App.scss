@@ -1,0 +1,149 @@
+#root {
+  background: url('/background.svg') no-repeat;
+  background-size: 100%;
+  width: 100vw;
+  height: 100vh;
+  padding: 0 20vw;
+  box-sizing: border-box;
+}
+
+header {
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  ul {
+    list-style: none;
+    li {
+      display: inline-block;
+      margin: 0 30px;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      position: relative;
+    }
+  }
+}
+
+.btn {
+  color: white;
+  background: black;
+  padding: 5px 15px;
+  border: none;
+  font-size: 17px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.5s all;
+
+  &:hover {
+    background: rgb(90, 90, 201);
+  }
+}
+
+main {
+  display: flex;
+  padding-top: 150px;
+  justify-content: space-between;
+
+  article {
+    max-width: 700px;
+  }
+
+  h1 {
+    font-size: 90px;
+    line-height: 90px;
+    margin-bottom: 30px;
+  }
+
+  p {
+    font-size: 1.25em;
+    line-height: 35px;
+    color: #617d98;
+  }
+}
+
+@media screen and (max-width: 1370px){
+  main {
+    h1 {
+      font-size: 50px;
+      line-height: 50px;
+    }
+    p {
+      font-size: 1em;
+    }
+
+  }
+}
+
+@media screen and (max-width: 900px) {
+  main {
+    padding-top: 20px;
+    img {
+      display: none;
+    }
+    h1 {
+      line-height:60px;
+    }
+  }
+
+  #root {
+    background-size: auto auto;
+    padding: 0 5vw;
+  }
+
+  header {
+    
+    button {
+      display: none;
+    }
+    ul {
+      display: none;
+    }
+  }
+}
+
+div[class^="submenu"] {
+  visibility: hidden;
+  position: absolute;
+  background: #fff;
+  border-radius: 5px;
+  color: black;
+  width: 400px;
+  top: 53px;
+  transform: translateX(-50%);
+  padding: 30px;
+  transition: left 1s;
+
+  &::before {
+    content: " ";
+    width:0px;
+    height:0px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #fff;
+    position: absolute;
+    top: -5px;
+    left: 50%;
+  }
+
+}
+
+.submenu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: large;
+
+  li {
+    display: inline-block;
+    margin: 0px 10px 0px 0px;
+    color: black;
+  }
+
+}
+
+.submenu-show {
+  visibility:visible !important;
+}
+
