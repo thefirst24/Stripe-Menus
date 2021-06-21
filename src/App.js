@@ -19,34 +19,32 @@ const Submenu = () => {
 
 const Header = () => {
   const {setIsOpen,setTitle,setItems,submenu} = useContext(AppContext);
+
+  const onPointerOverHandler = (title,items,e) => {
+    setIsOpen(true);
+    setTitle(title);
+    setItems(items);
+    const rect = e.target.getBoundingClientRect();
+    const middle = (rect.left + rect.right )/ 2
+    submenu.current.style.left = middle + "px";
+  }
+
   return (
     <header>
       <img src="./logo.svg" alt="logo"></img>
       <ul>
-        <li onPointerOver={(e) => {
-          setIsOpen(true);
-          setTitle("Products");
-          setItems(["Payment","Terminal","Connect"]);
-          const rect = e.target.getBoundingClientRect();
-          const left = (rect.left + rect.right )/ 2
-          submenu.current.style.left = left + "px";
-          }}  onPointerLeave={() => setIsOpen(false)}>Products</li>
-        <li onPointerEnter={(e) => {
-          setIsOpen(true);
-          setTitle("Developers");
-          setItems(["Payment","Terminal","Connect"])
-          const rect = e.target.getBoundingClientRect();
-          const left = (rect.left + rect.right )/ 2
-          submenu.current.style.left = left + "px";
-          }} onPointerLeave={() => setIsOpen(false)}>Developers</li>
-        <li onPointerEnter={(e) => {
-          setIsOpen(true);
-          setTitle("Company");
-          setItems(["Payment","Terminal","Connect"])
-          const rect = e.target.getBoundingClientRect();
-          const left = (rect.left + rect.right )/ 2
-          submenu.current.style.left = left + "px";
-          }} onPointerLeave={() => setIsOpen(false)}>Company</li>
+        <li onPointerOver={(e) => onPointerOverHandler("Products",["Payment","Terminal","Connect"],e)}  
+          onPointerLeave={() => setIsOpen(false)}>
+            Products
+        </li>
+        <li onPointerOver={(e) => onPointerOverHandler("Developers",["Plugins","Libraries","Help","Billing"],e)}  
+          onPointerLeave={() => setIsOpen(false)}>
+            Developers
+        </li>
+        <li onPointerOver={(e) => onPointerOverHandler("Company",["About","Customers"],e)}  
+          onPointerLeave={() => setIsOpen(false)}>
+            Company
+        </li>
       </ul>
       <button className="btn">Sign in</button>
     </header>
@@ -70,7 +68,7 @@ const Main = () => {
 function App() {
   const [title,setTitle] = useState("title");
   const [items,setItems] = useState([]);
-  const [isOpen,setIsOpen] = useState(true);
+  const [isOpen,setIsOpen] = useState(false);
   const submenu = useRef(null);
   return (
     <AppContext.Provider value={{title,items,setIsOpen,isOpen,setTitle,submenu,setItems}}>
